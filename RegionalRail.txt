@@ -1,0 +1,70 @@
+local component = require("component")
+local amtrak = component.ir_remote_control
+
+amtrak.setBrake(0.0)
+amtrak.horn()
+os.sleep(1)
+amtrak.horn()
+amtrak.setThrottle(0.38)
+print("Regional Rail Running")
+
+while(true) do
+local array = {amtrak.getPos()}
+i = array[1]
+j = array[3]
+
+if i > -15500.00 and i < -15495.00 then
+if j > 3355.00 and j < 3360.00 then
+print("Arriving at New Downtown")
+amtrak.setThrottle(0.0)
+amtrak.setBrake(0.35)
+os.sleep(0)
+end
+end
+
+if i > -15675.00 and i < -15673.00 then
+if j > 3355.00 and j < 3360.00 then
+print("Arrived at New Downtown")
+amtrak.setBrake(1.0)
+os.sleep(15)
+os.execute("RegionalRail")
+end
+end
+
+if i > -15935.00 and i < -15930.00 then
+if j > 4120.00 and j < 4125 then
+print("Arriving At Village")
+amtrak.setBrake(0.25)
+amtrak.setThrottle(0.0)
+os.sleep(0)
+end
+end
+
+if i > -15715.00 and i < -15710.00 then
+if j > 4205.00 and j < 4210.00 then
+print("Arrived at Village")
+amtrak.setBrake(1.0)
+os.sleep(15)
+os.execute("RegionalRail")
+end
+end
+
+if i > -15153.00 and i < -15148.00 then
+if j > 4125.00 and j > 4130.00 then
+print("Arriving At Space Center")
+amtrak.setThrottle(0.0)
+amtrak.setBrake(0.20)
+os.sleep(0)
+end
+end
+
+if i > -15153.00 and i < -15148.00 then
+if j > 3910.00 and j < 3914.00 then
+print("Arrived At Space Center")
+amtrak.setBrake(1.0)
+os.sleep(15)
+os.execute("RegionalRail")
+end
+end
+
+end
